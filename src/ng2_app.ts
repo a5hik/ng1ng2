@@ -7,7 +7,6 @@ import {NgModule, Component} from '@angular/core';
 import {RouterModule, UrlHandlingStrategy} from '@angular/router';
 import {BrowserModule} from '@angular/platform-browser';
 import {UpgradeModule} from '@angular/upgrade/static';
-import {RouterUpgradeInitializer} from '@angular/router/upgrade';
 
 // import app modules
 import {MessagesNgModule} from './messages';
@@ -17,7 +16,9 @@ import {SettingsNgModule} from './settings';
 // This URL handling strategy is custom and application-specific.
 // Using it we can tell the Angular 2 router to handle only URL starting with settings.
 export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
-  shouldProcessUrl(url) { return url.toString().startsWith("/settings"); }
+  shouldProcessUrl(url) {
+   console.log(url.toString());
+   return url.toString().startsWith("/settings"); }
   extract(url) { return url; }
   merge(url, whole) { return url; }
 }
@@ -29,7 +30,11 @@ export class Ng1Ng2UrlHandlingStrategy implements UrlHandlingStrategy {
     <div class="ng-view"></div>
   `,
 })
-export class RootCmp {}
+export class RootCmp {
+  constructor() {
+    console.log('Comes here to root');
+  }
+}
 
 @NgModule({
   imports: [
@@ -48,11 +53,13 @@ export class RootCmp {}
   providers: [
     { provide: UrlHandlingStrategy, useClass: Ng1Ng2UrlHandlingStrategy }
   ],
+  declarations: [RootCmp],
+  entryComponents: [RootCmp]
 
-  entryComponents: [RootCmp],
-  declarations: [RootCmp]
 })
 export class Ng2AppModule {
   constructor(public upgrade: UpgradeModule){}
-  ngDoBootstrap() {}
+  ngDoBootstrap(): void {
+
+  }
 }
