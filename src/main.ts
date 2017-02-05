@@ -13,8 +13,11 @@ import {Ng2AppModule} from './ng2_app';
  * bootstrap the Angular 1 module.
  */
 platformBrowserDynamic().bootstrapModule(Ng2AppModule).then(ref => {
+  console.debug('AppModule bootstrapped');
   const upgrade = (<any>ref.instance).upgrade;
+  console.debug('upgrade obtained');
   // bootstrap angular1
   upgrade.bootstrap(document.body, [Ng1AppModule.name]);
+  console.debug('bootstrapping finished');
   setUpLocationSync(upgrade);
 });

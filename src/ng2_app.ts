@@ -49,9 +49,10 @@ export class RootCmp {}
     { provide: UrlHandlingStrategy, useClass: Ng1Ng2UrlHandlingStrategy }
   ],
 
-  bootstrap: [RootCmp],
+  entryComponents: [RootCmp],
   declarations: [RootCmp]
 })
 export class Ng2AppModule {
   constructor(public upgrade: UpgradeModule){}
+  ngDoBootstrap() {}
 }

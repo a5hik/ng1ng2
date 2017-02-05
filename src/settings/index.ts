@@ -5,6 +5,7 @@ import {RouterModule} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {SettingsCmp} from './settings_cmp';
 import {PageSizeCmp} from './page_size_cmp';
+import {MessageCmpDirective} from './message_ng2';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import {PageSizeCmp} from './page_size_cmp';
       ] },
     ])
   ],
-  declarations: [SettingsCmp, PageSizeCmp]
+  declarations: [SettingsCmp, PageSizeCmp, MessageCmpDirective]
 })
 export class SettingsNgModule {
 }
