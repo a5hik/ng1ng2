@@ -16,7 +16,7 @@ The application shows how to migrate an Angular 1 app to Angular 2 using the Ang
 
 - optionally `npm run build` to build bundle
 
-## Applicaiton
+## Application
 
 ### Modules
 
